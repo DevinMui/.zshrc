@@ -4,6 +4,10 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=/usr/local/opt/python3/libexec/bin:$PATH
+# export PATH="/usr/local/anaconda3/bin:$PATH"  # commented out by conda initialize
+# avr path
+export PATH=/usr/local/bin:/usr/local/avr/bin:$PATH
 
 export ZSH="/Users/devinmui/.oh-my-zsh"
 
@@ -107,9 +111,11 @@ bindkey '^[[B' history-substring-search-down
 
 source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 
-alias ls=exa
+alias ls=lsd
+# alias ls=exa
 alias cat=ccat
 alias vim='nvim'
+alias vi='nvim'
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -127,3 +133,33 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/devinmui/.nvm/versions/node/v10.15.3/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/devinmui/.nvm/versions/node/v10.15.3/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/devinmui/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/devinmui/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/devinmui/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/devinmui/google-cloud-sdk/completion.zsh.inc'; fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+export OPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1
+export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/usr/local/opt/qt
+export PATH=$PATH:/usr/local/opt/qt/bin
+export REACT_EDITOR=code
